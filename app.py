@@ -15,7 +15,7 @@ def hello():
 
 
 @app.route('/test', methods=['GET'])
-def test():
+def item():
     return jsonify({"data": "New Hello World", "request_id": unix_time}), 200
 
 
@@ -26,6 +26,16 @@ def read_item():
     if api_key == '1234':
         return {'status': 'OK'}, 200
     return {'status': api_key}, 210
+
+
+@app.get("/sendsms")
+def sendSMS():
+    api_key = request.args.get('api_key')
+    number = request.args.get('number')
+
+    # if api_key == '1234':
+    #     return {'status': 'OK'}, 200
+    return {'status': api_key, 'number': number}, 200
 
 
 if __name__ == '__main__':
