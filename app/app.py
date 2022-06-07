@@ -9,6 +9,14 @@ print(unix_time)
 app = Flask(__name__)
 
 
+@app.route('/', methods=['GET'])
+def helloworld():
+    return jsonify({"data": "New Hello World", "request_id": unix_time}), 200
+
+@app.route('/new', methods=['GET'])
+def helloworld():
+    return jsonify({"data": "New Hello World", "request_id": unix_time}), 200
+
 @app.route('/test', methods=['GET'])
 def helloworld():
     return jsonify({"data": "New Hello World", "request_id": unix_time}), 200
