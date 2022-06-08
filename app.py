@@ -41,9 +41,11 @@ def sendSMS():
         #     return {'status': 'OK'}, 200
         data = request.get_data()
         # json = request.get_json()
-        return {'status': 12345, "data": data, "json": json, "number": number, "api_key": api_key, 'args': request.args}, 200
+        return {'status': 12345, "data": data, "number": number, "api_key": api_key,
+                'args': request.args}, 200
     except Exception as exp:
         return {"error": exp}, 200
+
 
 @app.get("/report")
 def report():
