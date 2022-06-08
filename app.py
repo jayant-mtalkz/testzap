@@ -38,7 +38,9 @@ def sendSMS():
     req_rx.append(d)
     # if api_key == '1234':
     #     return {'status': 'OK'}, 200
-    return {'status': 12345, "number": number, "api_key": api_key, 'args': request.args}, 200
+    data = request.get_data()
+    json = request.get_json()
+    return {'status': 12345, "data": data, "json": json, "number": number, "api_key": api_key, 'args': request.args}, 200
 
 
 @app.get("/report")
