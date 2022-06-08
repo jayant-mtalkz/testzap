@@ -35,7 +35,7 @@ def sendSMS():
 
     # if api_key == '1234':
     #     return {'status': 'OK'}, 200
-    return {'status': api_key, 'number': number}, 200
+    return {'status': 1234, 'number': 9999345671}, 200
 
 
 if __name__ == '__main__':
