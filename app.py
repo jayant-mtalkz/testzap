@@ -40,14 +40,14 @@ def sendSMS():
         # if api_key == '1234':
         #     return {'status': 'OK'}, 200
         data = request.get_data()
-        json = request.get_json()
+        # json = request.get_json()
         return {'status': 12345, "data": data, "json": json, "number": number, "api_key": api_key, 'args': request.args}, 200
     except Exception as exp:
         return {"error": exp}, 200
 
 @app.get("/report")
 def report():
-    return {'status': "OK", 'args': req_rx}, 200
+    return req_rx, 200
 
 
 if __name__ == '__main__':
