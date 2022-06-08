@@ -3,12 +3,13 @@ from flask import Flask, jsonify, request
 import datetime
 
 date = datetime.datetime.now()
-unix_time = datetime.datetime.timestamp(date)*1000
+unix_time = datetime.datetime.timestamp(date) * 1000
 print(unix_time)
 
 app = Flask(__name__)
 
 req_rx = []
+
 
 @app.route('/', methods=['GET'])
 def hello():
@@ -33,9 +34,8 @@ def read_item():
 def sendSMS():
     api_key = request.args.get('api_key')
     number = request.args.get('number')
-
-	d = {'status': 12345, "number": number, "api_key": api_key, 'args': request.args}
-	req_rx.append(d)
+    d = {'status': 12345, "number": number, "api_key": api_key, 'args': request.args}
+    req_rx.append(d)
     # if api_key == '1234':
     #     return {'status': 'OK'}, 200
     return {'status': 12345, "number": number, "api_key": api_key, 'args': request.args}, 200
@@ -43,7 +43,6 @@ def sendSMS():
 
 @app.get("/report")
 def report():
-	req_rx.append(d)
     return {'status': "OK", 'args': req_rx}, 200
 
 
