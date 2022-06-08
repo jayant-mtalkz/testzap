@@ -32,16 +32,18 @@ def read_item():
 
 @app.get("/sendsms")
 def sendSMS():
-    api_key = request.args.get('api_key')
-    number = request.args.get('number')
-    d = {'status': 12345, "number": number, "api_key": api_key, 'args': request.args}
-    req_rx.append(d)
-    # if api_key == '1234':
-    #     return {'status': 'OK'}, 200
-    data = request.get_data()
-    json = request.get_json()
-    return {'status': 12345, "data": data, "json": json, "number": number, "api_key": api_key, 'args': request.args}, 200
-
+    try:
+        api_key = request.args.get('api_key')
+        number = request.args.get('number')
+        d = {'status': 12345, "number": number, "api_key": api_key, 'args': request.args}
+        req_rx.append(d)
+        # if api_key == '1234':
+        #     return {'status': 'OK'}, 200
+        data = request.get_data()
+        json = request.get_json()
+        return {'status': 12345, "data": data, "json": json, "number": number, "api_key": api_key, 'args': request.args}, 200
+    except Exception as exp:
+        return {"error": exp}, 200
 
 @app.get("/report")
 def report():
